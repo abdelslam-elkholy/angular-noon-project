@@ -1,0 +1,122 @@
+<div class="div1 d-flex" id="singleProductPage">
+  <div class="container-fluid mt-3" style="width: 33%; background-color: white">
+    <div
+      class="ecommerce-gallery"
+      data-mdb-zoom-effect="true"
+      data-mdb-auto-height="true"
+    >
+      <div class="row py-3 shadow-5">
+        <div class="col-12 mb-1">
+          <div class="lightbox">
+            <img
+              [src]="product?.PrdImgURL"
+              alt="Gallery image 1"
+              class="ecommerce-gallery-main-img active w-100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-3" style="width: 33%; background-color: white">
+    <form>
+      <h4 class="nameproduct">{{ product?.name }}</h4>
+      <h3>{{ product?.details }}</h3>
+      <p>Material:&nbsp;&nbsp;{{ product?.Material }}</p>
+      <p>
+        rating:&nbsp;&nbsp;<span class="bg-success link-light p-1 rounded">
+          <i class="fa fa-star"></i>
+          4.7</span
+        >
+      </p>
+      <p class="price">Was:&nbsp;&nbsp;&nbsp;{{ product?.price }}</p>
+
+      <p>
+        Saving:&nbsp;&nbsp;<strong
+          class="align-self-center text-lowercase badge text-wrap fw-bolder fst-italic"
+          style="
+            border-radius: 50px 20px;
+            background-color: rgb(241, 241, 4);
+            color: black;
+          "
+          >express</strong
+        >
+      </p>
+      <img
+        src="./../../../assets/images/707dcf7e-9467-4bd9-8cfe-8d5ade48c8bd.png"
+        width="100%"
+      />
+      <p><b> Quantity</b></p>
+      <input
+        type="number"
+        name="number"
+        value="1"
+        id="quanVal"
+        style="height: 40px; width: 4em"
+      />
+      <button
+        style="
+          height: 40px;
+          width: 85%;
+          border: 0;
+          background-color: rgb(44, 44, 249);
+          color: #ffff;
+        "
+      >
+        Add To Cart
+      </button>
+    </form>
+  </div>
+  <div class="container-fluid mt-3" style="width: 30%; background-color: white">
+    <p>
+      <img src="./../../../assets/images//free_returns_usp.svg" /> hassle free
+      returns with this offer. <a href="#"> Learn more</a>
+    </p>
+    <p>
+      <img src="./../../../assets/images/seller.svg" />Sold by<a href="#"
+        >noon</a
+      >
+    </p>
+    <hr />
+    <div style="text-align: center; gap: 70px; display: flex">
+      <div>
+        <img
+          width="50px"
+          src="./../../../assets/images/badge_low_returns_seller.png"
+        />
+        <p>low return seller</p>
+      </div>
+      <div>
+        <img
+          width="50px"
+          src="./../../../assets/images/badge_great_recent_rating.png"
+        />
+        <p>low return seller</p>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <img src="./../../../assets/images/ree_returns_usp.svg" /><b
+        >FREE RETURNS
+      </b>
+      <p>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Get free returns on eligible items
+      </p>
+    </div>
+    <div>
+      <img src="./../../../assets/images/trusted_shipping_usp_v2.svg" /><b
+        >TRUSTED SHIPPING
+      </b>
+      <p>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Free shipping when you spend EGP 200
+        and above on express items
+      </p>
+    </div>
+    <div>
+      <img src="./../../../assets/images/secure_usp.svg" /><b
+        >SECURE SHOPPING
+      </b>
+      <p>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Your data is always protected</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<main class="d-flex justify-content-around flex-wrap m-4">
+  <div
+    *ngFor="let product of products"
+    class="card col-3 border-0 shadow m-4"
+    (click)="ProductDetails(product.id)"
+  >
+    <img
+      [src]="product.PrdImgURL"
+      class="border-0 p-2"
+      alt=""
+      style="height: 15rem !important"
+    />
+    <div class="card-body d-flex flex-column justify-content-between">
+      <h5
+        class="card-title"
+        style="cursor: pointer"
+        (click)="ProductDetails(product.id)"
+      >
+        {{ product.name | uppercase }}
+      </h5>
+      <p class="card-text" style="height: 6rem !important">
+        {{
+          product.details && product.details.length > 100
+            ? product.details.slice(0, 100) + "..."
+            : product.details
+        }}
+      </p>
+      <div class="fw-bold m-3">
+        {{ product.price | currency : "USD" : "symbol" }}
+      </div>
+      <div class="d-flex justify-content-between mt-auto">
+        <button href="" class="btn btn-warning">Add To Cart</button>
+        <span class="bg-success link-light p-2 rounded">
+          <i class="fa fa-star"></i>
+
+          4.7
+        </span>
+      </div>
+    </div>
+  </div>
+</main>

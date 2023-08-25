@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <h2>{{ isNewProduct ? "Add New Product" : "Edit Product" }}</h2>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+  <form #productForm="ngForm" (ngSubmit)="saveProduct()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        [(ngModel)]="currentProduct.name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        class="form-control"
+        [(ngModel)]="currentProduct.quantity"
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        class="form-control"
+        [(ngModel)]="currentProduct.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="category">Category ID:</label>
+      <input
+        type="number"
+        id="category"
+        name="category"
+        class="form-control"
+        [(ngModel)]="currentProduct.categoryID"
+      />
+    </div>
+    <div class="form-group">
+      <label for="material">Material:</label>
+      <input
+        type="text"
+        id="material"
+        name="material"
+        class="form-control"
+        [(ngModel)]="currentProduct.Material"
+      />
+    </div>
+    <div class="form-group">
+      <label for="imageURL">Image URL:</label>
+      <input
+        type="text"
+        id="imageURL"
+        name="imageURL"
+        class="form-control"
+        [(ngModel)]="currentProduct.PrdImgURL"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="details">Details:</label>
+      <textarea
+        id="details"
+        name="details"
+        class="form-control"
+        [(ngModel)]="currentProduct.details"
+      ></textarea>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="productForm.invalid"
+    >
+      {{ isNewProduct ? "Add Product" : "Save Changes" }}
+    </button>
+  </form>
+</div>

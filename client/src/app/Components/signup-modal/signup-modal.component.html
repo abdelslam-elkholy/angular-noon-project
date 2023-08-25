@@ -1,0 +1,192 @@
+<a
+  class="nav-link fw-bold open"
+  aria-current="page"
+  (click)="openModal(modalTemplate)"
+>
+  Sign Up <i class="fa fa-user user-icon"></i>
+</a>
+<ng-template #modalTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">SignUp</h4>
+    <button type="button" class="close" (click)="modalRef.hide()">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-2">
+      <div class="card-header">Sign Up</div>
+      <div class="card-body">
+        <form
+          [formGroup]="userForm"
+          (ngSubmit)="addUser()"
+          #userform="ngForm"
+          *ngIf="!submitted"
+        >
+          <div class="form-group row mb-1">
+            <label for="firstName" class="col-md-3 col-form-label"
+              >First Name</label
+            >
+            <div class="col-md-8">
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="First Name (required)"
+                name="firstName"
+                formControlName="firstName"
+                [ngClass]="{
+                  'is-invalid':
+                    (firstName?.touched || firstName?.dirty) &&
+                    firstName?.invalid
+                }"
+              />
+
+              <span class="invalid-feedback">
+                <!-- <span class="alert alert-danger"> -->
+                <span *ngIf="firstName?.errors?.['required']"
+                  >First Name required</span
+                >
+                <span *ngIf="firstName?.errors?.['minlength']"
+                  >First Name must be at least 3 characters</span
+                >
+              </span>
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="lastNameId"
+              >Last Name</label
+            >
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="lastNameId"
+                type="text"
+                name="lastName"
+                placeholder="Last Name (required)"
+                formControlName="lastName"
+                [ngClass]="{
+                  'is-invalid':
+                    (lastName?.touched || lastName?.dirty) && lastName?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="firstName?.errors?.['required']"
+                  >Last Name required</span
+                >
+                <span *ngIf="firstName?.errors?.['pattern']"
+                  >Last Name must be at least 4 characters</span
+                >
+              </span>
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="emailId">Email</label>
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="emailId"
+                type="email"
+                placeholder="Email (required)"
+                name="email"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid':
+                    (email?.touched || email?.dirty) && email?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="email?.errors?.['required']"
+                  >Email is required</span
+                >
+                <span *ngIf="email?.errors?.['emailExists']"
+                  >Email already exists</span
+                >
+                <span *ngIf="email?.errors?.['email']"
+                  >Invalid email format</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="passwordId"
+              >Password</label
+            >
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="passwordId"
+                type="password"
+                placeholder="Password (required)"
+                name="password"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid':
+                    (password?.touched || password?.dirty) && password?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="password?.errors?.['required']"
+                  >Password is required</span
+                >
+                <span *ngIf="password?.errors?.['minlength']">
+                  Password must be at least 8 characters long
+                </span>
+                <span *ngIf="password?.errors?.['passwordMismatch']"
+                  >Passwords doesnt not match</span
+                >
+              </span>
+            </div>
+          </div>
+          <br />
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="confirmPasswordId"
+              >Confirm Password</label
+            >
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="confirmPasswordId"
+                type="password"
+                placeholder="Confirm Password (required)"
+                name="confirmPassword"
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-invalid':
+                    (confirmPassword?.touched || confirmPassword?.dirty) &&
+                    confirmPassword?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="confirmPassword?.errors?.['required']"
+                  >Confirm Password is required</span
+                >
+                <span *ngIf="userForm.errors?.['passwordMismatch']"
+                  >Passwords doesnt not match</span
+                >
+              </span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="userform.invalid"
+            >
+              Submit
+            </button>
+            <button class="btn">
+              already user?
+              <app-signin-modal
+                style="display: inline-block"
+                (click)="closeModal()"
+              ></app-signin-modal>
+              instead
+            </button>
+          </div>
+        </form>
+        <h4 class="text-info" *ngIf="submitted">Thanks for register</h4>
+      </div>
+    </div>
+  </div>
+</ng-template>

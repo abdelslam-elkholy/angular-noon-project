@@ -1,0 +1,97 @@
+<a
+  class="nav-link fw-bold open"
+  aria-current="page"
+  (click)="openModal(modalTemplate)"
+>
+  Sign In
+</a>
+<ng-template #modalTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">SignUp</h4>
+    <button type="button" class="close" (click)="modalRef.hide()">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card mb-4">
+      <div class="card-header">Sign In</div>
+      <div class="card-body">
+        <form
+          [formGroup]="userForm"
+          #userform="ngForm"
+          *ngIf="!submitted"
+          (ngSubmit)="login()"
+        >
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="emailId">Email</label>
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="emailId"
+                type="email"
+                placeholder="Email (required)"
+                name="email"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid':
+                    (email?.touched || email?.dirty) && email?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="email?.errors?.['required']"
+                  >Email is required</span
+                >
+                <span *ngIf="email?.errors?.['wrongCredentials']"
+                  >Wron Email Or Password</span
+                >
+                <span *ngIf="email?.errors?.['email']"
+                  >Invalid email format</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label class="col-md-3 col-form-label" for="passwordId"
+              >Password</label
+            >
+            <div class="col-md-8">
+              <input
+                class="form-control"
+                id="passwordId"
+                type="password"
+                placeholder="Password (required)"
+                name="password"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid':
+                    (password?.touched || password?.dirty) && password?.invalid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="password?.errors?.['required']"
+                  >Password is required</span
+                >
+                <span *ngIf="email?.errors?.['wrongCredentials']"
+                  >Wron Email Or Password</span
+                >
+                <span *ngIf="password?.errors?.['minlength']">
+                  Password must be at least 8 characters long
+                </span>
+              </span>
+            </div>
+          </div>
+          <br />
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="userform.invalid"
+          >
+            Submit
+          </button>
+        </form>
+        <h4 class="text-info" *ngIf="submitted">Thanks for register</h4>
+      </div>
+    </div>
+  </div>
+</ng-template>
